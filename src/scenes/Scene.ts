@@ -1,5 +1,5 @@
 import { AnimatedSprite, Container, Graphics, Texture, Text, NineSlicePlane } from "pixi.js";
-import { DinoHat } from "./DinoHat";
+import { DinoHat } from "../game/DinoHat";
 
 export class Scene extends Container {
 

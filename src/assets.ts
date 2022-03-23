@@ -10,6 +10,13 @@ export const assets = [
     {url: "./dino/run-6.png", name:"DinoRun6"},
     {url: "./dino/run-7.png", name:"DinoRun7"},
     
-    {url: "./ui/panel_blue.png", name:"Panel"},
-
+    {url: "./ui/window.png", name:"Window"},
+    {url: "./ui/btn-mouse-default.png", name:"Button Default Mouse"},
+    {url: "./ui/btn-mouse-down.png", name:"Button Down Mouse"},
+    {url: "./ui/btn-mouse-over.png", name:"Button Over Mouse"},
+    {url: "./ui/btn-pointer-default.png", name:"Button Default Pointer"},
+    {url: "./ui/btn-pointer-down.png", name:"Button Down Pointer"},
+    {url: "./ui/btn-touch-default.png", name:"Button Default Touch"},
+    {url: "./ui/btn-touch-down.png", name:"Button Down Touch"},
+    
 ];

@@ -1,15 +1,18 @@
 import { Application, Loader } from 'pixi.js'
 import { assets } from './assets';
-import { Scene } from './Scene';
+import { UIDemo } from './scenes/UIDemo';
+import { Keyboard } from './utils/Keyboard';
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
 	resolution: window.devicePixelRatio || 1,
 	autoDensity: true,
 	backgroundColor: 0x6495ed,
-	width: 1280,
-	height: 720,
+	width: 1920,
+	height: 1080,
 });
+
+Keyboard.initialize();
 
 window.addEventListener("resize", ()=>{
 	const scaleX = window.innerWidth / app.screen.width;
@@ -36,7 +39,7 @@ window.dispatchEvent(new Event("resize"));
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-	const myScene = new Scene();
+	const myScene = new UIDemo();
 	app.stage.addChild(myScene);
 });
 
