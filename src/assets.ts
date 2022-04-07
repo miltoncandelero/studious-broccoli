@@ -19,4 +19,5 @@ export const assets = [
     {url: "./ui/btn-touch-default.png", name:"Button Default Touch"},
     {url: "./ui/btn-touch-down.png", name:"Button Down Touch"},
     
+    {url: "./dvd.png", name:"DVD Logo"},
 ];
