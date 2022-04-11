@@ -1,4 +1,5 @@
 import { AnimatedSprite, Container, Texture } from "pixi.js";
+import { Popup } from "../ui/Popup";
 import { IUpdateable } from "../utils/IUpdateable";
 
 export class TickerScene extends Container implements IUpdateable {
@@ -23,7 +24,12 @@ export class TickerScene extends Container implements IUpdateable {
         );
         this.dinoAnimated.play();
         this.dinoAnimated.animationSpeed = 0.35;
+        this.dinoAnimated.scale.x = -1;
         this.addChild(this.dinoAnimated);
+
+        const popup = new Popup();
+        popup.on(Popup.CLOSE_EVENT, ()=>this.removeChild(popup))
+        this.addChild(popup);
     }
 
     public update(_deltaTime: number, deltaFrame: number): void {
