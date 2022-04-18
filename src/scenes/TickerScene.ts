@@ -14,6 +14,10 @@ export class TickerScene extends Container implements IUpdateable {
     private world:Container;
     private background: TilingSprite;
 
+    private gameSpeed:number = 200;
+
+    private timePassed:number = 0;
+
     constructor()
     {
         super();
@@ -40,14 +44,10 @@ export class TickerScene extends Container implements IUpdateable {
         this.world.addChild(plat);
         this.platforms.push(plat);
 
-        plat = new Platform()
-        plat.position.set(-500,700);
-        this.world.addChild(plat);
-        this.platforms.push(plat);
-
         this.playerDino = new Player();
         this.playerDino.x = 300;
         this.playerDino.y = 300;
+        this.playerDino.scale.set(0.5);
         this.world.addChild(this.playerDino);
 
         this.addChild(this.world);
@@ -56,14 +56,38 @@ export class TickerScene extends Container implements IUpdateable {
 
     public update(deltaTime: number, _deltaFrame: number): void {
 
+        this.timePassed += deltaTime;
+
+        if (this.timePassed > (2000 * 200/this.gameSpeed))
+        {
+            this.gameSpeed += 50;
+            this.timePassed = 0;
+            const plat = new Platform()
+            plat.position.set(WIDTH,Math.random()*1080);
+            this.world.addChild(plat);
+            this.platforms.push(plat);
+        }
+
         this.playerDino.update(deltaTime); // update animation
 
         for (let platform of this.platforms) {
+            platform.speed.x = - this.gameSpeed;
+            platform.update(deltaTime/1000);
             const overlap = checkCollision(this.playerDino, platform);
             if (overlap != null)
             {
                 this.playerDino.separate(overlap, platform.position);
             }
+
+
+            if (platform.getHitbox().right < 0)
+            {
+                platform.destroy();
+            }
         }
+
+        this.platforms = this.platforms.filter((elem) => !elem.destroyed);
+        console.log(this.platforms.length);
+        this.background.tilePosition.x -= this.gameSpeed * deltaTime/1000;
     }
 }

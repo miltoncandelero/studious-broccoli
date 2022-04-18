@@ -5,8 +5,9 @@ import { PhysicsContainer } from "./PhysicsContainer";
 
 export class Player extends PhysicsContainer implements IHitbox
 {
-    private static readonly GRAVITY = 350;
-    private static readonly MOVE_SPEED = 350;
+    private static readonly GRAVITY = 500;
+    private static readonly MOVE_SPEED = 0;
+    private static readonly JUMP_SPEED = 600;
     
     public canJump = true;
     private dinoAnimated: AnimatedSprite;
@@ -75,10 +76,14 @@ export class Player extends PhysicsContainer implements IHitbox
             this.speed.x = 0;
         }
 
-        // if (Keyboard.state.get("ArrowUp"))
-        // {
-        //     this.jump();
-        // }
+        if (Keyboard.state.get("ArrowDown"))
+        {
+            this.acceleration.y = Player.GRAVITY * 5;
+        }else
+        {
+            this.acceleration.y = Player.GRAVITY;
+        }
+
     }
 
     private jump()
@@ -86,7 +91,7 @@ export class Player extends PhysicsContainer implements IHitbox
         if (this.canJump)
         {
             this.canJump = false;
-            this.speed.y = -500;
+            this.speed.y = -Player.JUMP_SPEED;
         }
     }
 
