@@ -2,18 +2,19 @@ import { Container, Sprite, Texture } from "pixi.js";
 
 export class Button extends Container
 {   
+    public static readonly CLICKED_EVENT: string = "buttonClick";
     private def:Texture;
     private down:Texture;
     private over:Texture;
 
 
     private spr:Sprite;
-    constructor(def:Texture, down:Texture, over:Texture)
+    constructor(def:Texture, down?:Texture, over?:Texture)
     {
         super();
         this.def = def;
-        this.down = down;
-        this.over = over;
+        this.down = down ?? def;
+        this.over = over ?? def;
 
         this.spr = Sprite.from(def);
         this.spr.anchor.set(0.5);
@@ -31,7 +32,7 @@ export class Button extends Container
         this.spr.texture = this.down;
     }
     private onMouseUp():void {
-        this.emit("buttonClick")
+        this.emit(Button.CLICKED_EVENT)
         this.spr.texture = this.over;
     }
     private onMouseOver():void {

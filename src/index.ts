@@ -1,6 +1,6 @@
 import { Application, Loader, Ticker } from 'pixi.js'
 import { assets } from './assets';
-import { TickerScene } from './scenes/TickerScene';
+import { SoundScene } from './scenes/SoundScene';
 import { Keyboard } from './utils/Keyboard';
 
 export const WIDTH = 1920;
@@ -42,7 +42,7 @@ window.dispatchEvent(new Event("resize"));
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-	const myScene = new TickerScene();
+	const myScene = new SoundScene();
 	app.stage.addChild(myScene);
 	Ticker.shared.add(function (deltaFrame){
 		myScene.update(Ticker.shared.deltaMS, deltaFrame);

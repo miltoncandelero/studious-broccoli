@@ -23,4 +23,12 @@ export const assets = [
     {url: "./desert/block.png", name:"Block"},
     {url: "./desert/cactus.png", name:"Cactus"},
     {url: "./desert/platform.png", name:"Platform"},
+
+    {url: "./ui/dice_sword.png", name:"Button Sword"},
+    {url: "./ui/minus.png", name:"Button Minus"},
+    {url: "./ui/plus.png", name:"Button Plus"},
+    {url: "./ui/musicOff.png", name:"Button Music Off"},
+    {url: "./ui/musicOn.png", name:"Button Music On"},
+    
+    {url: "./sounds/sword.mp3", name: "Woosh"}
 ];
