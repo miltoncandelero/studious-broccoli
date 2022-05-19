@@ -30,5 +30,10 @@ export const assets = [
     {url: "./ui/musicOff.png", name:"Button Music Off"},
     {url: "./ui/musicOn.png", name:"Button Music On"},
     
-    {url: "./sounds/sword.mp3", name: "Woosh"}
+    {url: "./sounds/sword.mp3", name: "Woosh"},
+
+    {url:"./fonts/macondo.ttf", name: "MiFuente"},
+    {url:"https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap", name: "google?"},
+    {url:"./fonts/desyrel.xml", name:"Desyrel ASD"},
+    {url:"./fonts/macondo.fnt", name:"MacondoSDF"}
 ];

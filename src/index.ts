@@ -1,6 +1,7 @@
-import { Application, Loader, Ticker } from 'pixi.js'
+import { WebfontLoaderPlugin } from 'pixi-webfont-loader';
+import { Application, BitmapFont, Loader, TextStyle, Ticker } from 'pixi.js'
 import { assets } from './assets';
-import { SoundScene } from './scenes/SoundScene';
+import { TextScene } from './scenes/TextScene';
 import { Keyboard } from './utils/Keyboard';
 
 export const WIDTH = 1920;
@@ -39,13 +40,27 @@ window.addEventListener("resize", ()=>{
 });
 window.dispatchEvent(new Event("resize"));
 
+Loader.registerPlugin(WebfontLoaderPlugin);
+
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-	const myScene = new SoundScene();
+
+	// crear fuentes bitmap
+	const aux = new TextStyle({
+		fontSize: 15,
+		dropShadow: true,
+		fill: "red",
+		lineJoin: "round",
+		stroke: "#15be09",
+		fontFamily: "Kanit",
+	})
+	BitmapFont.from("Mi BitmapFont",aux,{chars:BitmapFont.ASCII});
+
+	const myScene = new TextScene();
 	app.stage.addChild(myScene);
-	Ticker.shared.add(function (deltaFrame){
-		myScene.update(Ticker.shared.deltaMS, deltaFrame);
+	Ticker.shared.add(function (){
+		myScene.update();
 	});
 });
 
