@@ -35,5 +35,8 @@ export const assets = [
     {url:"./fonts/macondo.ttf", name: "MiFuente"},
     {url:"https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap", name: "google?"},
     {url:"./fonts/desyrel.xml", name:"Desyrel ASD"},
-    {url:"./fonts/macondo.fnt", name:"MacondoSDF"}
+    {url:"./fonts/macondo.fnt", name:"MacondoSDF"},
+
+    {url: "./spritesheet/texture.json", name: "spritesheet"},
+    {url: "./spritesheet/robot.png", name: "robot spritesheet"}
 ];
