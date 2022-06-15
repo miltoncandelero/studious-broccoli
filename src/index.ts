@@ -1,7 +1,8 @@
 import { WebfontLoaderPlugin } from 'pixi-webfont-loader';
 import { Application, BitmapFont, Loader, TextStyle, Ticker } from 'pixi.js'
+import { Group } from 'tweedle.js';
 import { assets } from './assets';
-import { TextScene } from './scenes/TextScene';
+import { AnimationScene } from './scenes/AnimationScene';
 import { Keyboard } from './utils/Keyboard';
 
 export const WIDTH = 1920;
@@ -57,10 +58,11 @@ Loader.shared.onComplete.add(()=>{
 	})
 	BitmapFont.from("Mi BitmapFont",aux,{chars:BitmapFont.ASCII});
 
-	const myScene = new TextScene();
+	const myScene = new AnimationScene();
 	app.stage.addChild(myScene);
-	Ticker.shared.add(function (){
-		myScene.update();
+	Ticker.shared.add(function (frame){
+		Group.shared.update();
+		myScene.update(frame);
 	});
 });
 
